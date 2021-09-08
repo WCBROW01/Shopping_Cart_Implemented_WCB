@@ -80,8 +80,8 @@ public class ShoppingCart implements ShoppingCartInterface {
 	public Item[] toArray() {
 		Object[] bagArray = bag.toArray();
 		Item[] itemArray = new Item[getCurrentSize()];
-		for (int currentItem = 0; currentItem < getCurrentSize(); currentItem++)
-			itemArray[currentItem] = (Item) bagArray[currentItem];
+		for (int itemIndex = 0; itemIndex < getCurrentSize(); itemIndex++)
+			itemArray[itemIndex] = (Item) bagArray[itemIndex];
 		
 		return itemArray;
 	}
