@@ -6,13 +6,13 @@
  */
 public class ShoppingCart implements ShoppingCartInterface {
 	
-	private ArrayBag<Item> shoppingCart;
+	private ArrayBag<Item> bag;
 	
 	/**
 	 * Creates a shopping cart whose initial capacity is 25.
 	 */
 	public ShoppingCart() {
-		shoppingCart = new ArrayBag<Item>();
+		bag = new ArrayBag<Item>();
 	}
 	
 	/**
@@ -20,55 +20,57 @@ public class ShoppingCart implements ShoppingCartInterface {
 	 * @param desiredCapacity the capacity of the shopping cart
 	 */
 	public ShoppingCart(int desiredCapacity) {
-		shoppingCart = new ArrayBag<Item>(desiredCapacity);
+		bag = new ArrayBag<Item>(desiredCapacity);
 	}
 	
 	@Override
 	public int getCurrentSize() {
-		return shoppingCart.getCurrentSize();
+		return bag.getCurrentSize();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return shoppingCart.isEmpty();
+		return bag.isEmpty();
 	}
 
 	@Override
 	public boolean add(Item newItem) {
-		return shoppingCart.add(newItem);
+		return bag.add(newItem);
 	}
 
 	@Override
 	public Item remove() {
-		return shoppingCart.remove();
+		return bag.remove();
 	}
 
 	@Override
 	public boolean remove(Item anItem) {
-		return shoppingCart.remove(anItem);
+		return bag.remove(anItem);
 	}
 
 	@Override
 	public void emptyCart() {
-		shoppingCart.clear();
+		bag.clear();
 	}
 
 	@Override
 	public int getAmountOf(Item anItem) {
-		return shoppingCart.getFrequencyOf(anItem);
+		return bag.getFrequencyOf(anItem);
 	}
 
 	@Override
 	public boolean contains(Item anItem) {
-		return shoppingCart.contains(anItem);
+		return bag.contains(anItem);
 	}
 	
 	@Override
 	public int getTotalPrice() {
-		Item[] cartArray = shoppingCart.toArray();
+		Object[] bagArray = bag.toArray();
 		int totalPrice = 0;
-		for (int itemIndex = 0; itemIndex < shoppingCart.getCurrentSize(); itemIndex++) {
-			totalPrice += cartArray[itemIndex].getPrice();
+		Item tempItem;
+		for (int itemIndex = 0; itemIndex < bag.getCurrentSize(); itemIndex++) {
+			tempItem = (Item) bagArray[itemIndex];
+			totalPrice += tempItem.getPrice();
 		}
 		
 		return totalPrice;
@@ -76,7 +78,12 @@ public class ShoppingCart implements ShoppingCartInterface {
 
 	@Override
 	public Item[] toArray() {
-		return shoppingCart.toArray();
+		Object[] bagArray = bag.toArray();
+		Item[] itemArray = new Item[getCurrentSize()];
+		for (int currentItem = 0; currentItem < getCurrentSize(); currentItem++)
+			itemArray[currentItem] = (Item) bagArray[currentItem];
+		
+		return itemArray;
 	}
 
 }

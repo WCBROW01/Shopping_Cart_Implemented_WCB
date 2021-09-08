@@ -38,8 +38,8 @@ public class Application {
 		System.out.println("Testing contains method with " + win10Home.getName() + ":");
 		testContains(aCart, win10Home);
 		
-		// Printing the contents of the cart (currently breaks the program)
-		//printCartContents(aCart);
+		// Printing the contents of the cart
+		printCartContents(aCart);
 		
 		// Testing the two remove methods
 		System.out.println("Testing the remove method with a parameter:");
@@ -47,8 +47,8 @@ public class Application {
 		System.out.println("Testing the remove method without a parameter:");
 		testRemove(aCart);
 		
-		// Printing the contents of the cart again (currently breaks the program)
-		//printCartContents(aCart);
+		// Printing the contents of the cart again
+		printCartContents(aCart);
 		
 		// Emptying the cart
 		System.out.println("Emptying the cart.");
@@ -124,7 +124,7 @@ public class Application {
 	}
 	
 	/**
-	 * Print out the contents of a cart. (currently broken)
+	 * Print out the contents of a cart.
 	 * @param aCart the cart to print the contents of
 	 */
 	private static void printCartContents(ShoppingCart aCart) {
